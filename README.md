@@ -120,6 +120,62 @@ pip install requests openpyxl
 
 ---
 
+## 💻 Windows — Full Setup via PowerShell (No VSCode)
+
+<details>
+<summary>Click to expand</summary>
+
+**Step 1 — Open PowerShell**
+
+Press `Windows key + X` and click **Windows PowerShell** or **Terminal**
+
+**Step 2 — Install Python**
+
+Go to https://www.python.org/downloads/ and click Download. Run the installer.
+
+> ⚠️ Tick **"Add Python to PATH"** at the bottom before clicking Install
+
+**Step 3 — Install Git**
+
+Go to https://git-scm.com/downloads and download for Windows. Run the installer, click Next through everything.
+
+> After installing, close PowerShell and reopen it so Git is recognised
+
+**Step 4 — Go to Desktop**
+```powershell
+cd Desktop
+```
+
+**Step 5 — Clone the repository**
+```powershell
+git clone https://github.com/V4dant/VirusTotal-ip-checker.git
+```
+
+**Step 6 — Go into the folder**
+```powershell
+cd VirusTotal-ip-checker
+```
+
+**Step 7 — Install libraries**
+```powershell
+pip install requests openpyxl
+```
+
+**Step 8 — Open the script in Notepad**
+```powershell
+notepad vt_ip_checker.py
+```
+Paste your API key and IPs, save with `Ctrl + S`, close Notepad
+
+**Step 9 — Run the script**
+```powershell
+python vt_ip_checker.py
+```
+
+</details>
+
+---
+
 ## 🚀 How to use
 
 **Step 1 — Add your API key**
@@ -165,7 +221,7 @@ IP_Threat_Analysis_2026-03-20.xlsx
 | Platform | Command |
 |---|---|
 | Mac | `source ~/vt_env/bin/activate` then `python3 vt_ip_checker.py` |
-| Windows | `python vt_ip_checker.py` |
+| Windows PowerShell | `cd Desktop\VirusTotal-ip-checker` then `notepad vt_ip_checker.py` then `python vt_ip_checker.py` |
 
 ---
 
