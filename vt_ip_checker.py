@@ -23,32 +23,23 @@ from datetime import date
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 
-# ──────────────────────────────────────────────────────
 #  1. PASTE YOUR API KEY
-# ──────────────────────────────────────────────────────
-
-VT_API_KEY = "c3cf9f5b37517a9771c510d37a5de6adbe2fae7a6ed5bdfe9baa654638ecee40"
+VT_API_KEY = ""
 
 # ──────────────────────────────────────────────────────
 #  2. PASTE YOUR IPs HERE  (limit : 500)
 # ──────────────────────────────────────────────────────
 #paste your ips here, one per line, up to 500 total
-IP_LIST = """
-110.42.110.67
+IP_LIST = """ 
 """.strip()
 
-# ──────────────────────────────────────────────────────
 #  SETTINGS
-# ──────────────────────────────────────────────────────
-
-REQUESTS_PER_MINUTE = 20000          # Free API = 4/min, 500/day
+REQUESTS_PER_MINUTE = 2000          # Free API = 500/day
 PROGRESS_FILE       = "progress.json"
 OUTPUT_FILE         = f"IP_Threat_Analysis_{date.today()}.xlsx"
 
 
-# ──────────────────────────────────────────────────────
 #  PROGRESS  (save & resume)
-# ──────────────────────────────────────────────────────
 
 def load_progress(ips):
     """
@@ -87,9 +78,7 @@ def clear_progress():
         os.remove(PROGRESS_FILE)
 
 
-# ──────────────────────────────────────────────────────
 #  VIRUSTOTAL LOOKUP
-# ──────────────────────────────────────────────────────
 
 def check_ip(ip):
     """
@@ -137,9 +126,7 @@ def check_ip(ip):
         return "ERROR", None
 
 
-# ──────────────────────────────────────────────────────
 #  EXCEL BUILDER
-# ──────────────────────────────────────────────────────
 
 def build_excel(ips, results_map):
     """
@@ -179,7 +166,7 @@ def build_excel(ips, results_map):
             malicious, total = result
             if malicious == 0:
                 status = "Clean"
-                rating = ""
+                rating = f"0//{total}"
             else:
                 status = "Malicious"
                 rating = f"{malicious}//{total}"
@@ -224,10 +211,6 @@ def build_excel(ips, results_map):
 
     wb.save(OUTPUT_FILE)
 
-
-# ──────────────────────────────────────────────────────
-#  MAIN
-# ──────────────────────────────────────────────────────
 
 def main():
     if VT_API_KEY == "PASTE_YOUR_API_KEY_HERE":
