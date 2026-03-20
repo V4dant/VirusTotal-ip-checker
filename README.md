@@ -1,24 +1,20 @@
 VirusTotal IP Checker
 Automatically checks a list of IP addresses against VirusTotal and generates a formatted Excel report with the results.
 
-What it does
-
+What it does:
 Takes a list of IPs you paste into the script
 Checks each one against the VirusTotal API
 Saves the results to an Excel file with 3 columns:
-
-Source Address — the IP
-Status — Malicious or Clean
-VT Rating — e.g. 5//94 (how many of 94 engines flagged it)
-
+1.Source Address — the IP
+2.Status — Malicious or Clean
+3.VT Rating — e.g. 5//94 (how many of 94 engines flagged it)
 
 If the daily API limit runs out mid-run, it saves progress automatically and resumes the next day from where it stopped
 
+Requirements:
 
-Requirements
-
-Python 3
-A free VirusTotal API key — get one at https://www.virustotal.com
+1.Python 3
+2.A free VirusTotal API key — get one at https://www.virustotal.com
 
 
 1.Installation — Mac
@@ -91,12 +87,12 @@ Daily usage — Mac
 Every day you only need two commands:
 bashsource ~/vt_env/bin/activate
 python3 vt_ip_checker.py
+
 Daily usage — Windows
 Every day you only need:
 python vt_ip_checker.py
 
-Notes
-
-Keep the repository Private since your API key is stored in the script
-VT scores may vary slightly between runs as VirusTotal updates in real time — this is normal
-The script preserves the exact order of IPs as pasted
+Notes:-
+1.Keep the repository Private since your API key is stored in the script.
+2.VT scores may vary slightly between runs as VirusTotal updates in real time — this is normal.
+3.The script preserves the exact order of IPs as pasted.
