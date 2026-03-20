@@ -40,7 +40,7 @@
 
 **Step 3 —** Click **API Key** from the dropdown menu
 
-![API Key Location](screenshots/api_key.png)
+![API Key Location](api_key.png)
 
 **Step 4 —** Copy your API key and paste it into the script:
 ```python
