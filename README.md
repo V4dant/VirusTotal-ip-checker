@@ -94,5 +94,7 @@ python vt_ip_checker.py
 
 Notes:-
 1.Keep the repository Private since your API key is stored in the script.
+
 2.VT scores may vary slightly between runs as VirusTotal updates in real time — this is normal.
+
 3.The script preserves the exact order of IPs as pasted.
