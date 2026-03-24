@@ -26,15 +26,13 @@ from openpyxl.styles import Font, PatternFill, Alignment
 #  1. PASTE YOUR API KEY
 VT_API_KEY = ""
 
-# ──────────────────────────────────────────────────────
 #  2. PASTE YOUR IPs HERE  (limit : 500)
-# ──────────────────────────────────────────────────────
 #paste your ips here, one per line, up to 500 total
 IP_LIST = """ 
 """.strip()
 
 #  SETTINGS
-REQUESTS_PER_MINUTE = 2000          # Free API = 500/day
+REQUESTS_PER_MINUTE = 500          # Free API = 500/day
 PROGRESS_FILE       = "progress.json"
 OUTPUT_FILE         = f"IP_Threat_Analysis_{date.today()}.xlsx"
 
@@ -253,7 +251,7 @@ def main():
 
         result = check_ip(ip)
 
-        # ── Quota exceeded ──────────────────────────────
+        # Quota exceeded
         if result == ("LIMIT", None):
             print("DAILY LIMIT REACHED — saving progress and stopping.")
             results_map[ip] = "LIMIT"
@@ -261,17 +259,17 @@ def main():
             save_progress(ips, results_map)
             continue
 
-        # ── Error ───────────────────────────────────────
+        # Error
         elif result == ("ERROR", None):
             print("error — marked as Unknown")
             results_map[ip] = "ERROR"
 
-        # ── Not in VT ───────────────────────────────────
+        # Not in VT
         elif result == (None, None):
             print("not found in VT")
             results_map[ip] = (None, None)
 
-        # ── Normal result ───────────────────────────────
+        # Normal result 
         else:
             malicious, total = result
             results_map[ip]  = (malicious, total)
@@ -289,7 +287,7 @@ def main():
         if idx < len(ips) and not limit_hit:
             time.sleep(delay)
 
-    # ── Build Excel (always — even if partial) ──────────
+    # Build Excel (always — even if partial) 
     print(f"\n{'─'*44}")
 
     if limit_hit:
